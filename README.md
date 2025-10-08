@@ -43,11 +43,15 @@ The repository is [https://github.com/SDEV-220/SDEV_220_Final_Project_Sweetwater
 All team members can write and create pull requests. The main branch is protected (one review needed to push code).
 
 ### Roles
-Project Manager: Henry Barcalow
-Front End: Audrina Ortega, Areiahna Cooks
-Back End: Audrina Ortega, Henry Barcalow
-Design: Henry Barcalow, Areiahna Cooks
-Marketing/Pitching: Audrina Ortega, Henry Barcalow
+**Project Manager:** Henry Barcalow
+
+**Front End:** Audrina Ortega, Areiahna Cooks
+
+**Back End:** Audrina Ortega, Henry Barcalow
+
+**Design:** Henry Barcalow, Areiahna Cooks
+
+**Marketing/Pitching:** Audrina Ortega, Henry Barcalow
 
 ## Building (WIP)
 ### Cloning the Repository
