@@ -61,4 +61,10 @@ To clone the repository, run the following in git bash:
 
 This will clone all the repository files into a new, local folder on your machine.
 
-These build directions are incomplete and will not work until the project is closer to completion.
+To install the required packages, first set up a virtual environment:
+
+`python -m venv .venv` (or whatever your virtual environment name of choice is)
+
+Then install the required packages after starting the environment:
+
+`pip install -r requirements.txt`
