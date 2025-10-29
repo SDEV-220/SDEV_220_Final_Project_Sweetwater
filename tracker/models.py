@@ -13,4 +13,4 @@ class Log(models.Model):
     practice_date = models.DateField(default=timezone.now)
 
     def __str__(self):
-        return f"{self.song} on {self.instrument} for {self.practice_time}"
+        return f"{self.song} on {self.instrument} ({self.practice_time})"
