@@ -76,4 +76,4 @@ To set up the local environment, create an empty .env file in the directory `con
 
 Inside this .env file, you can create configuration for the SECRET_KEY, DATABASE_NAME, DATABASE_USER, DATABASE_PASSWORD, and DEBUG environment variables. If you don't want to, it will automatically pull the test database from the repository.
 
-After setting up your environment, everything should be good to run.
+After setting up your environment, everything should be good to run. Default superuser is named `admin` with the password `local_admin`. Thus, _**nothing you commit to GitHub is secure**_. Do **NOT** commit personal information to the database.
