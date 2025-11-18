@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>View Your Logs</title>
+  <meta charset="UTF-8">
+  <title>View Your Logs</title>
 </head>
 <body>
-    <header>
-        <h1><a href="/">Music Practice Tracker</a></h1>
-    </header>
-    <article>
-        <time>Practiced XXX for XXX</time>
-        <h2><a href="">Beethoven's 9th</a></h2>
-        <p>Practiced on piano</p>
-    </article>
+  <header>
+    <h1><a href="/">Music Practice Tracker</a></h1>
+  </header>
+  {% for log in logs %}
+  <article>
+    <h2><a href="">{{ log }}</a></h2>
+    <time>{{ log.practice_date }}</time>
+  </article>
+  {% endfor %}
 </body>
 </html>
