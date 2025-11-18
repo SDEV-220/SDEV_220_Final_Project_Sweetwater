@@ -53,7 +53,7 @@ All team members can write and create pull requests. The main branch is protecte
 
 **Marketing/Pitching:** Audrina Ortega, Henry Barcalow
 
-## Building (WIP)
+## Building
 ### Cloning the Repository
 To clone the repository, run the following in git bash:
 
@@ -68,3 +68,12 @@ To install the required packages, first set up a virtual environment:
 Then install the required packages after starting the environment:
 
 `pip install -r requirements.txt`
+
+### Setting Up a Local Environment
+To set up the local environment, create an empty .env file in the directory `config/django`.
+
+`touch config/django/.env`
+
+Inside this .env file, you can create configuration for the SECRET_KEY, DATABASE_NAME, DATABASE_USER, DATABASE_PASSWORD, and DEBUG environment variables. If you don't want to, it will automatically pull the test database from the repository.
+
+After setting up your environment, everything should be good to run.
