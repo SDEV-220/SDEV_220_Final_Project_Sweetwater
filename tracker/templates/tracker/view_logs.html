@@ -1,18 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>View Your Logs</title>
-</head>
-<body>
-  <header>
-    <h1><a href="/">Music Practice Tracker</a></h1>
-  </header>
+{% extends 'tracker/base.html' %}
+
+{% block title %}View Your Logs{% endblock title %}
+
+{% block content %}
   {% for log in logs %}
   <article>
     <h2><a href="">{{ log }}</a></h2>
     <time>{{ log.practice_date }}</time>
   </article>
   {% endfor %}
-</body>
-</html>
+{% endblock content %}
