@@ -4,9 +4,16 @@
 
 {% block content %}
   {% for log in logs %}
-  <article>
-    <h2><a href="">{{ log }}</a></h2>
-    <time>{{ log.practice_date }}</time>
-  </article>
+
+      <div class="card m-3">
+        <div class="card-body">
+          <h5 class="card-title">{{ log }}</h5>
+          <p class="card-text">{{ log.date }} for {{ log.duration }}</p>
+            <!-- modify the button eventually so user can edit practice records -->
+          <a href="#" class="btn btn-primary">Edit</a>
+        </div>
+      </div>
+
+
   {% endfor %}
 {% endblock content %}
