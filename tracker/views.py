@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from .models import Log
 from .forms import LogForm
@@ -17,7 +17,21 @@ def add_log(request):
             log = form.save(commit=False)
             log.user = request.user
             log.save()
-        return redirect('view_logs')
+            return redirect('view_logs')
     else:
         form = LogForm()
+    return render(request, 'tracker/edit_log.html', {'form': form})
+
+def edit_log(request, pk):
+    log = get_object_or_404(Log, pk=pk)
+
+    if request.method == 'POST':
+        form = LogForm(request.POST, instance=log)
+        if form.is_valid():
+            log = form.save(commit=False)
+            log.user = request.user
+            log.save()
+            return redirect('view_logs')
+    else:
+        form = LogForm(instance=log)
     return render(request, 'tracker/edit_log.html', {'form': form})

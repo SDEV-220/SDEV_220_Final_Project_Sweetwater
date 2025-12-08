@@ -11,6 +11,13 @@
       <div class="card m-3">
         <div class="card-body">
           <h5 class="card-title">{{ log }}</h5>
+          {% if user.is_authenticated %}
+          <aside class="actions">
+            <a class="btn btn-primary" href="{% url 'edit_log' pk=log.pk %}">
+              {% include './icons/pencil-fill.svg' %}
+            </a>
+          </aside>
+          {% endif %}
           <p class="card-text">{{ log.date }} for {{ log.duration }}</p>
             <!-- modify the button eventually so user can edit practice records -->
           <a href="#" class="btn btn-primary">Edit</a>
