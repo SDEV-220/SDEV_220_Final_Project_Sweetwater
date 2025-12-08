@@ -3,8 +3,11 @@
 {% block title %}View Your Logs{% endblock title %}
 
 {% block content %}
-  {% for log in logs %}
 
+<div class="container-fluid">
+  <div class="row justify-content-start">
+    {% for log in logs %}
+    <div class="col-md-4">
       <div class="card m-3">
         <div class="card-body">
           <h5 class="card-title">{{ log }}</h5>
@@ -13,7 +16,8 @@
           <a href="#" class="btn btn-primary">Edit</a>
         </div>
       </div>
-
-
+    </div>
   {% endfor %}
+  </div>
+</div>
 {% endblock content %}
