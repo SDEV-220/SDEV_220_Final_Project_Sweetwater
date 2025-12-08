@@ -6,5 +6,5 @@ def index(request):
     return render(request, 'tracker/index.html', {})
 
 def view_logs(request):
-    logs = Log.objects.filter(practice_date__lte=timezone.now()).order_by('-practice_date')
+    logs = Log.objects.filter(date__lte=timezone.now()).order_by('-date')
     return render(request, 'tracker/view_logs.html', {'logs': logs})
