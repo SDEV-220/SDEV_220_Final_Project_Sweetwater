@@ -7,16 +7,24 @@
   {% bootstrap_javascript %}
 </head>
 <body>
-  <div class="container-fluid">
-    <ul class="nav justify-content-left" style="background-color: #0072BA;">
-      <li class="nav-item">
-        <a class="nav-link link-light" href="/">HOME</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link link-light" href="/view_logs">View Logs</a>
-      </li>
-    </ul>
+  <nav class="navbar navbar-expand-lg navbar-light bg-blue bg-primary">
+    <div class="container-fluid m-auto">
+      <a class="navbar-brand" href="{% url 'index' %}">Music Log Tracker</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" href="{% url 'index' %}">Home</a>
+          <a class="nav-item nav-link" href="{% url 'view_logs' %}">View Logs</a>
+          <a class="nav-item nav-link" href="{% url 'add_log' %}">{% include './icons/plus-square.svg' %}</a>
+        </div>
+      </div>
+    </div>
+  </nav>
 
+  <div class="container-fluid mx-auto my-2">
     {% block content %}
     {% endblock content %}
   </div>
