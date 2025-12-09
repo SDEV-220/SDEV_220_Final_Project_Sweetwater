@@ -1,15 +1,16 @@
 # Sweetwater Design Project
 ## Overview (TL;DR)
-This is the final project for the SDEV 220 class at Ivy Tech, created by Areiahna Cooks, Audrina Ortega, and Henry Barcalow.
+This is the final project for the SDEV 220 class at Ivy Tech, created by Audrina Ortega and Henry Barcalow.
 The project creates a Django web app that allows musicians to make a record of their practice sessions.
 
 ## Communication
 ### Primary
-- Discord: We have a Discord server set up and integrated with the Github repo. The server is automatically
+- Discord: We have a Discord server set up and integrated with the GitHub repo. The server is automatically
   updated through a webhook whenever changes are made on the repo.
-- Github Discussions: The Github repo was created under an organization (SDEV 220) so we could have access to
+- GitHub Discussions: The GitHub repo was created under an organization (SDEV 220) so we could have access to
   Discussions. This allows us to easily reference the repo in our discussion posts and manage issues in the discussion.
-- Github Projects: To keep track of our progress, we are using Github Projects as a Kanban board. This allows us
+- GitHub Projects: To keep track of our progress, we are using 
+- GitHub Projects as a Kanban board. This allows us
   to review what code we need to start, what code is in progress, and what code is finished.
 
 ### Secondary
@@ -45,11 +46,11 @@ All team members can write and create pull requests. The main branch is protecte
 ### Roles
 **Project Manager:** Henry Barcalow
 
-**Front End:** Audrina Ortega, Areiahna Cooks
+**Front End:** Audrina Ortega, ~~Areiahna Cooks~~
 
 **Back End:** Audrina Ortega, Henry Barcalow
 
-**Design:** Henry Barcalow, Areiahna Cooks
+**Design:** Henry Barcalow, ~~Areiahna Cooks~~
 
 **Marketing/Pitching:** Audrina Ortega, Henry Barcalow
 
@@ -76,7 +77,7 @@ To set up the local environment, create an empty .env file in the directory `con
 
 Inside this .env file, you can create configuration for the ENVIRONMENT_TYPE, SECRET_KEY, DATABASE_NAME, DATABASE_USER, DATABASE_PASSWORD, and DEBUG environment variables. If you don't want to, it will automatically pull the test database from the repository. ENVIRONMENT_TYPE is `'config.django.local'`, `'config.django.production'`, or `'config.django.test'`. I'd recommend just leaving .env empty as the project has default values for development.
 
-After setting up your environment, everything should be good to run. Default superuser is named `admin` with the password `local_admin`. Thus, _**nothing you commit to GitHub is secure**_. Do **NOT** commit personal information to the database.
+After setting up your environment, everything should be good to run. Default superuser is named `admin` with the password `local_admin`. Thus, _**nothing you commit to GitHub is secure**_. Do **NOT** commit personal information to the database. There's also a dummy user with the name `new_guy` and the password `This_Is_A_Password`.
 
 ### Helpful Links
 
