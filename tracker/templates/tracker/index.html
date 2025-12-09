@@ -2,10 +2,69 @@
 
 {% block title %}Home{% endblock title %}
 {% block content %}
+
+{% if user.is_authenticated %}
+  <div class="container-fluid">
+    <div class="row justify-content-start">
+      <div class="col-md-4">
+        <div class="card m-3 bg-primary">
+          <h4 class="card-title m-auto">Practice Time by Song</h4>
+          <p class="card-text m-auto py-2">See how long you've practiced a song.</p>
+        </div>
+      {% for song in time_by_song %}
+        <div class="card m-3">
+          <div class="card-body">
+            <h6 class="card-title">{{ song.song }}</h6>
+            <p class="card-text my-2">Practiced for {{ song.totalTime }}</p>
+          </div>
+        </div>
+      {% endfor %}
+      </div>
+
+      <div class="col-md-4">
+        <div class="card m-3 bg-primary">
+          <h4 class="card-title m-auto">Practice Time by Instrument</h4>
+          <p class="card-text m-auto py-2">See how long you've practiced each instrument.</p>
+        </div>
+      {% for inst in time_by_instrument %}
+        <div class="card m-3">
+          <div class="card-body">
+            <h6 class="card-title">{{ inst.instrument }}</h6>
+            <p class="card-text my-2">Practiced for {{ inst.totalTime }}</p>
+          </div>
+        </div>
+      {% empty %}
+        <div class="card m-3">
+          <div class="card-body">
+            <p class="card-text my-2">No practice yet. Start something great!</p>
+          </div>
+        </div>
+      {% endfor %}
+      </div>
+
+      <div class="col-md-4">
+        <div class="card m-3 bg-primary">
+          <h4 class="card-title m-auto">Practice Time by Part</h4>
+          <p class="card-text m-auto py-2">See how long you've practiced one part in a song.</p>
+        </div>
+      {% for part in time_by_part %}
+        <div class="card m-3">
+          <div class="card-body">
+            <h6 class="card-title">{{ part.song }} on {{ part.instrument }}</h6>
+            <p class="card-text my-2">Practiced for {{ part.totalTime }}</p>
+          </div>
+        </div>
+      {% endfor %}
+      </div>
+    </div>
+  </div>
+{% else %}
+
   <p>This is the home page (I am not the prettifier)</p>
   <p>Track your music practice, yo!</p>
   <p>and some other stuff</p>
   <a href="/view_logs">View logs</a>
 
+{% endif %}
 
 {% endblock content %}
