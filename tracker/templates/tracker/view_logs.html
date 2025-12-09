@@ -27,7 +27,7 @@
           {% endif %}
           <p class="card-text my-2">{{ log.date }} for {{ log.duration }}</p>
 
-          {% if user.is_authenticated %}
+          {% if user.is_authenticated and can_edit %}
             <aside class="actions py-2">
               <a class="btn btn-primary" href="{% url 'edit_log' pk=log.pk %}">
                 {% include './icons/pencil-fill.svg' %}
