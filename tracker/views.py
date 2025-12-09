@@ -1,5 +1,5 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
-from django.utils import timezone
 from .models import Log
 from .forms import LogForm
 
@@ -7,9 +7,10 @@ def index(request):
     return render(request, 'tracker/index.html', {})
 
 def view_logs(request):
-    logs = Log.objects.filter(date__lte=timezone.now()).order_by('-date')
+    logs = Log.objects.filter().order_by('-date')
     return render(request, 'tracker/view_logs.html', {'logs': logs})
 
+@login_required
 def add_log(request):
     if request.method == 'POST':
         form = LogForm(request.POST)
@@ -22,6 +23,7 @@ def add_log(request):
         form = LogForm()
     return render(request, 'tracker/edit_log.html', {'form': form})
 
+@login_required
 def edit_log(request, pk):
     log = get_object_or_404(Log, pk=pk)
 
@@ -35,3 +37,10 @@ def edit_log(request, pk):
     else:
         form = LogForm(instance=log)
     return render(request, 'tracker/edit_log.html', {'form': form})
+
+@login_required
+def delete_log(request, pk):
+    log = get_object_or_404(Log, pk=pk)
+    if request.method == 'POST':
+        log.delete()
+    return redirect('view_logs')
