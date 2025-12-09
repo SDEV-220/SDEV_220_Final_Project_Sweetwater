@@ -24,17 +24,17 @@
 
         <div class="navbar-nav ml-auto">
           {% if user.is_authenticated %}
-            <a class="nav-item nav-link" href="{% url 'view_logs' username=user.username %}">Hello, {{ user.username }}!</a>
-            <a class="nav-item nav-link" href="{% url 'add_log' %}">New log {% include './icons/plus-square.svg' %}</a>
+            <a class="nav-item nav-link" href="{% url 'view_logs' username=user.username %}">{% include './icons/person-circle.svg' %} Hello, {{ user.username }}!</a>
+            <a class="nav-item nav-link" href="{% url 'add_log' %}">New Log {% include './icons/plus-square.svg' %}</a>
 
             <form action="{% url 'accounts:logout' %}" method="post">
               {% csrf_token %}
               <button type="submit" class="nav-item nav-link">
-                Log out {% include './icons/person-dash-fill.svg' %}
+                Log Out {% include './icons/person-dash-fill.svg' %}
               </button>
             </form>
           {% else %}
-            <a class="nav-item nav-link" href="{% url 'accounts:login' %}">Log in {% include './icons/person-circle.svg' %}</a>
+            <a class="nav-item nav-link" href="{% url 'accounts:login' %}">Log In {% include './icons/person-circle.svg' %}</a>
             <a class="nav-item nav-link" href="{% url 'accounts:register' %}">Register {% include './icons/person-plus-fill.svg' %}</a>
           {% endif %}
         </div>

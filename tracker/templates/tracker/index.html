@@ -59,12 +59,37 @@
     </div>
   </div>
 {% else %}
-
-  <p>This is the home page (I am not the prettifier)</p>
-  <p>Track your music practice, yo!</p>
-  <p>and some other stuff</p>
-  <a href="/view_logs">View logs</a>
+  <div class="card m-3">
+    <div class="card-header">
+      <h5 class="card-title my-1">Welcome to the Music Tracker</h5>
+    </div>
+    <div class="card-body">
+      <p class="card-text">Track your music practice and view a summary of your practice records!</p>
+      <p class="card-text">You can even share your specific records with other people!</p>
+      <a class="card-text" href="{% url 'view_logs' %}">See what our users are practicing!</a>
+    </div>
+  </div>
 
 {% endif %}
+
+  <div class="card m-3">
+    <div class="card-header">
+      <h5 class="card-title my-2 d-inline-block">
+        Getting Started
+      </h5>
+      <a class="card-title my-2 d-inline-block" data-bs-toggle="collapse" href="#collapseTutorial" role="button" aria-expanded="false" aria-controls="collapseExample">
+        {% include './icons/dash-square-fill.svg' %}
+      </a>
+    </div>
+    <div class="collapse" id="collapseTutorial">
+      <div class="card-body">
+        <p class="card-text my-2"><a class="btn btn-outline-primary" href="{% url 'accounts:register' %}">Register {% include './icons/person-plus-fill.svg' %}</a> for an account to begin tracking your music practice.</p>
+        <p class="card-text my-2">If you already have an account, <a class="btn btn-outline-primary" href="{% url 'accounts:login' %}">log in {% include './icons/person-circle.svg' %}</a> to your account now.</p>
+        <p class="card-text my-2">To add a new log, click the <a class="btn btn-outline-primary" href="{% url 'add_log' %}">New Log {% include './icons/plus-square.svg' %}</a> button in the menu bar.</p>
+        <p class="card-text my-2">You can view your logs using the <a class="btn btn-outline-primary" href="{% url 'view_logs' %}">View Logs</a> button at the top.</p>
+        <p class="card-text my-2">To get a link to your personal record, click the <a class="btn btn-outline-primary" href="{% url 'add_log' %}">{% include './icons/person-circle.svg' %} Profile</a> button in the menu bar.</p>
+      </div>
+    </div>
+  </div>
 
 {% endblock content %}
