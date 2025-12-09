@@ -15,14 +15,23 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="navbar-nav">
+        <div class="navbar-nav me-auto">
           <a class="nav-item nav-link" href="{% url 'index' %}">Home</a>
           <a class="nav-item nav-link" href="{% url 'view_logs' %}">View Logs</a>
+        </div>
 
+        <div class="navbar-nav ml-auto">
           {% if user.is_authenticated %}
-          <a class="nav-item nav-link" href="{% url 'add_log' %}">{% include './icons/plus-square.svg' %}</a>
+          <a class="nav-item nav-link" href="{% url 'add_log' %}">New log {% include './icons/plus-square.svg' %}</a>
+          <form action="{% url 'accounts:logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="nav-item nav-link">Logout
+              Log out {% include './icons/person-dash-fill.svg' %}
+            </button>
+          </form>
           {% else %}
-          <a class="nav-item nav-link" href="{% url 'login' %}">{% include './icons/person-plus-fill.svg' %}</a>
+          <a class="nav-item nav-link" href="{% url 'accounts:login' %}">Log in {% include './icons/person-circle.svg' %}</a>
+          <a class="nav-item nav-link" href="{% url 'accounts:register' %}">Register {% include './icons/person-plus-fill.svg' %}</a>
           {% endif %}
         </div>
       </div>
