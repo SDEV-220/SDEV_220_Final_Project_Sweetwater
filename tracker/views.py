@@ -62,6 +62,7 @@ def view_specific_log(request, username):
 
     context = {
         'logs': logs,
+        'username': username,
         'can_edit': (request.user.is_superuser or user_id == request.user),
     }
 

@@ -4,6 +4,24 @@
 
 {% block content %}
 
+{% if username %}
+  <div class="container-fluid">
+
+    <div class="justify-content-center">
+      <div class="card m-3">
+        <div class="card-header">
+          <h5 class="card-title my-1">{{ username }}'s Music Practice</h5>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Check out what {{ username }} has been practicing.</p>
+          <p class="card-text">You can share your records with other people too!</p>
+          <p class="card-text my-2">To get a link to your personal record, click the <a class="btn btn-outline-primary" href="{% url 'view_logs' username=user.username %}">{% include './icons/person-circle.svg' %} Profile</a> button in the menu bar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
 <div class="container-fluid">
   {% if not user.is_authenticated %}
     <div class="justify-content-center">
@@ -46,6 +64,13 @@
         </div>
       </div>
     </div>
+
+    {% empty %}
+      <div class="card m-3">
+        <div class="card-body">
+          <p class="card-text my-2">No practice yet. Start something great!</p>
+        </div>
+      </div>
   {% endfor %}
   </div>
 </div>
