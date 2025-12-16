@@ -1,9 +1,21 @@
 {% extends 'tracker/base.html' %}
 
-{% block title %}View Your Logs{% endblock title %}
+<!-- Display the user's name if it is a specific person's logs or a generic message otherwise. -->
+{% block title %}
+{% if user.is_authenticated %}
+  {% if username %}
+    {{ username }}'s Logs
+  {% else %}
+    Your Logs
+  {% endif %}
+{% else %}
+  View Recent Practices
+{% endif %}
+{% endblock title %}
 
 {% block content %}
 
+<!-- If the user is looking at a specific user's logs, describe whose logs they are. -->
 {% if username %}
   <div class="container-fluid">
 

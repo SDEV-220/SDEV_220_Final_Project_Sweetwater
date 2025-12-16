@@ -1,38 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Set up formatting. -->
   <title>{% block title %} {% endblock title %}</title>
   {% load django_bootstrap5 %}
   {% bootstrap_css %}
   {% bootstrap_javascript %}
 </head>
 <body>
+  <!-- Begin the navbar. -->
   <nav class="navbar navbar-expand-lg navbar-light bg-blue bg-primary">
     <div class="container-fluid m-auto">
+      <!-- Branding/home button. -->
+      <!-- UPDATE? Make this the site logo (Sweetwater, etc) -->
       <a class="navbar-brand" href="{% url 'index' %}">Music Log Tracker</a>
 
+      <!-- Expand button (for on mobile). -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
               aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
+      <!-- This is what gets expanded. -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- Left-side links: home and view logs. -->
+        <!-- UPDATE? The view logs button may eventually lead signed-in users to their specific
+        log screen by default. -->
         <div class="navbar-nav me-auto">
           <a class="nav-item nav-link" href="{% url 'index' %}">Home</a>
           <a class="nav-item nav-link" href="{% url 'view_logs' %}">View Logs</a>
         </div>
 
+        <!-- Right-side links: profile, add log, login, register, logout. -->
         <div class="navbar-nav ml-auto">
+          <!-- Show profile and Add Log button if the user is logged in. -->
           {% if user.is_authenticated %}
             <a class="nav-item nav-link" href="{% url 'view_logs' username=user.username %}">{% include './icons/person-circle.svg' %} Hello, {{ user.username }}!</a>
             <a class="nav-item nav-link" href="{% url 'add_log' %}">New Log {% include './icons/plus-square.svg' %}</a>
 
+            <!-- Logout button. -->
             <form action="{% url 'accounts:logout' %}" method="post">
               {% csrf_token %}
               <button type="submit" class="nav-item nav-link">
                 Log Out {% include './icons/person-dash-fill.svg' %}
               </button>
             </form>
+          <!-- If the user isn't logged in, show a prompt to log in. -->
           {% else %}
             <a class="nav-item nav-link" href="{% url 'accounts:login' %}">Log In {% include './icons/person-circle.svg' %}</a>
             <a class="nav-item nav-link" href="{% url 'accounts:register' %}">Register {% include './icons/person-plus-fill.svg' %}</a>
@@ -42,6 +55,7 @@
     </div>
   </nav>
 
+  <!-- Finally, a block for page content. -->
   <div class="container-fluid mx-auto my-2">
     {% block content %}
     {% endblock content %}
