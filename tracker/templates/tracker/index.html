@@ -4,53 +4,67 @@
 {% block content %}
 
 {% if user.is_authenticated %}
+  <!-- Display information about the user's practice if they are logged in. -->
   <div class="container-fluid">
     <div class="row justify-content-start">
+
+      <!-- First column. -->
       <div class="col-md-4">
+        <!-- Heading for the Practice Time by Song column. -->
         <div class="card m-3 bg-primary">
           <h4 class="card-title m-auto">Practice Time by Song</h4>
           <p class="card-text m-auto py-2">See how long you've practiced a song.</p>
         </div>
-      {% for song in time_by_song %}
-        <div class="card m-3">
-          <div class="card-body">
-            <h6 class="card-title">{{ song.song }}</h6>
-            <p class="card-text my-2">Practiced for {{ song.totalTime }}</p>
+
+        <!-- Display each song the user has practiced and how long they have practiced. -->
+        {% for song in time_by_song %}
+          <div class="card m-3">
+            <div class="card-body">
+              <h6 class="card-title">{{ song.song }}</h6>
+              <p class="card-text my-2">Practiced for {{ song.totalTime }}</p>
+            </div>
           </div>
-        </div>
-      {% endfor %}
+        {% endfor %}
       </div>
 
       <div class="col-md-4">
+        <!-- Heading for the Practice Time by Instrument column. -->
         <div class="card m-3 bg-primary">
           <h4 class="card-title m-auto">Practice Time by Instrument</h4>
           <p class="card-text m-auto py-2">See how long you've practiced each instrument.</p>
         </div>
-      {% for inst in time_by_instrument %}
-        <div class="card m-3">
-          <div class="card-body">
-            <h6 class="card-title">{{ inst.instrument }}</h6>
-            <p class="card-text my-2">Practiced for {{ inst.totalTime }}</p>
+
+        <!-- Display each instrument the user has practiced and how long they have practiced. -->
+        {% for inst in time_by_instrument %}
+          <div class="card m-3">
+            <div class="card-body">
+              <h6 class="card-title">{{ inst.instrument }}</h6>
+              <p class="card-text my-2">Practiced for {{ inst.totalTime }}</p>
+            </div>
           </div>
-        </div>
-      {% endfor %}
+        {% endfor %}
       </div>
 
       <div class="col-md-4">
+        <!-- Heading for the Practice Time by Part column. -->
         <div class="card m-3 bg-primary">
           <h4 class="card-title m-auto">Practice Time by Part</h4>
           <p class="card-text m-auto py-2">See how long you've practiced one part in a song.</p>
         </div>
-      {% for part in time_by_part %}
-        <div class="card m-3">
-          <div class="card-body">
-            <h6 class="card-title">{{ part.song }} on {{ part.instrument }}</h6>
-            <p class="card-text my-2">Practiced for {{ part.totalTime }}</p>
+
+        <!-- Display each part the user has practiced and how long they have practiced. -->
+        {% for part in time_by_part %}
+          <div class="card m-3">
+            <div class="card-body">
+              <h6 class="card-title">{{ part.song }} on {{ part.instrument }}</h6>
+              <p class="card-text my-2">Practiced for {{ part.totalTime }}</p>
+            </div>
           </div>
-        </div>
-      {% endfor %}
+        {% endfor %}
       </div>
     </div>
+
+    <!-- If the user doesn't have any data, then prompt them to practice. -->
     {% if not time_by_part %}
       <div class="card m-3">
         <div class="card-body">
@@ -59,7 +73,9 @@
       </div>
     {% endif %}
   </div>
+
 {% else %}
+  <!-- If the user isn't logged in, display a site overview. -->
   <div class="container-fluid">
     <div class="card m-3">
       <div class="card-header">
@@ -74,22 +90,28 @@
   </div>
 
 {% endif %}
+  <!-- Finally, at the bottom, display a tutorial so users know how to use the site. -->
   <div class="container-fluid">
     <div class="card m-3">
+      <!-- The tab starts collapsed by default. -->
       <div class="card-header">
         <h5 class="card-title my-2 d-inline-block">
           Getting Started
         </h5>
-        <a class="card-title my-1 mx-auto btn btn-outline-primary d-inline-block" data-bs-toggle="collapse" href="#collapseTutorial" aria-expanded="false">
-          =
-        </a>
+        <a class="card-title my-1 mx-auto btn btn-outline-primary d-inline-block"
+           data-bs-toggle="collapse" href="#collapseTutorial" aria-expanded="false">=</a>
       </div>
+
+      <!-- The tutorial itself. -->
       <div class="collapse" id="collapseTutorial">
         <div class="card-body">
-          <p class="card-text my-2"><a class="btn btn-outline-primary" href="{% url 'accounts:register' %}">Register {% include './icons/person-plus-fill.svg' %}</a> for an account to begin tracking your music practice.</p>
-          <p class="card-text my-2">If you already have an account, <a class="btn btn-outline-primary" href="{% url 'accounts:login' %}">log in {% include './icons/person-circle.svg' %}</a> to your account now.</p>
+          <!-- Prompt the user to register if they are not signed in. -->
+          {% if not user.is_authenticated %}
+            <p class="card-text my-2"><a class="btn btn-outline-primary" href="{% url 'accounts:register' %}">Register {% include './icons/person-plus-fill.svg' %}</a> for an account to begin tracking your music practice.</p>
+            <p class="card-text my-2">If you already have an account, <a class="btn btn-outline-primary" href="{% url 'accounts:login' %}">log in {% include './icons/person-circle.svg' %}</a> to your account now.</p>
 
-          {% if user.is_authenticated %}
+          <!-- Otherwise, tell them how to add logs. -->
+          {% else %}
             <p class="card-text my-2">To add a new log, click the <a class="btn btn-outline-primary" href="{% url 'add_log' %}">New Log {% include './icons/plus-square.svg' %}</a> button in the menu bar.</p>
             <p class="card-text my-2">You can view your logs using the <a class="btn btn-outline-primary" href="{% url 'view_logs' %}">View Logs</a> button at the top.</p>
             <p class="card-text my-2">To get a link to your personal record, click the <a class="btn btn-outline-primary" href="{% url 'view_logs' username=user.username %}">{% include './icons/person-circle.svg' %} Profile</a> button in the menu bar.</p>

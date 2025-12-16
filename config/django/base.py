@@ -36,8 +36,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Practice log tracking apps.
     'tracker',
     'accounts',
+    # 3rd party apps.
     'django_bootstrap5',
 ]
 
@@ -77,6 +79,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
+        # Default to the committed test database.
         'NAME': BASE_DIR / env('DATABASE_NAME', default='test_db.sqlite3'),
         'USER': env('DATABASE_USER', default='user'),
         'PASSWORD': env('DATABASE_PASSWORD', default='p@ssw0rd'),
@@ -108,6 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
+# Default time zone is in Fort Wayne, where Sweetwater is.
 TIME_ZONE = 'America/Fort_Wayne'
 
 USE_I18N = True

@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+# Admin URLs are handled by Django's default admin protocols. The main URLs are
+# handled by the tracker project and account URLs are handled by the accounts project.
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('tracker.urls')),
