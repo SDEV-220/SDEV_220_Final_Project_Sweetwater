@@ -2,22 +2,28 @@
 <html lang="en">
 <head>
   <!-- Set up formatting. -->
-  <title>{% block title %} {% endblock title %}</title>
   {% load django_bootstrap5 %}
+  {% load static %}
   {% bootstrap_css %}
   {% bootstrap_javascript %}
+
+  <title>{% block title %}{% endblock title %}</title>
+  <link rel="icon" href="{% static 'favicon.jpg' %}">
 </head>
 <body>
   <!-- Begin the navbar. -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-blue bg-primary">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom border-primary">
     <div class="container-fluid m-auto">
       <!-- Branding/home button. -->
       <!-- UPDATE? Make this the site logo (Sweetwater, etc) -->
-      <a class="navbar-brand" href="{% url 'index' %}">Music Log Tracker</a>
+      <a class="navbar-brand" href="{% url 'index' %}">
+        <img src="{% static 'sweetwater-header.png' %}" height="50p" alt="Sweetwater logo">
+      </a>
 
       <!-- Expand button (for on mobile). -->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+              aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -56,7 +62,7 @@
   </nav>
 
   <!-- Finally, a block for page content. -->
-  <div class="container-fluid mx-auto my-2">
+  <div class="container-fluid mx-auto bg-light">
     {% block content %}
     {% endblock content %}
   </div>

@@ -1,7 +1,13 @@
 {% extends 'tracker/base.html' %}
+{% load static %}
 
 {% block title %}Home{% endblock title %}
 {% block content %}
+
+<!-- Display the site logo. -->
+<div class="d-flex justify-content-center">
+  <img src="{% static 'sweetwater-logo.png' %}" width="60%" alt="Sweetwater logo">
+</div>
 
 {% if user.is_authenticated %}
   <!-- Display information about the user's practice if they are logged in. -->
